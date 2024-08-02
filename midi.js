@@ -1,8 +1,19 @@
 let midi = null; // global MIDIAccess object
 let noteStartTimes = {}; // Object to keep track of note start times
+let currentNoteIndex = 0; // Index to keep track of the current expected note
+// const noteSequence = [72, 74, 76, 77, 79, 81, 83, 84]; // Sequence of notes to be received
+// const musicSequence = [76, 74, 72, 74, 77, 76, 74, 72, 79, 77, 76, 74, 72, 74, 76, 72];
+const noteSequence = [72];  // , 74, 76, 77, 79, 81, 83, 84]; // Sequence of notes to be received
+const musicSequence = [76]; //, 74, 72, 74, 77, 76, 74, 72, 79, 77, 76, 74, 72, 74, 76, 72];
+const endSequence = [1];
+
+const sequenceSets = [ noteSequence, musicSequence, endSequence ];
+let seqIndex = 0;
+const timesList = [1, 1];
+
+let times = 0; // count times
 
 function onMIDISuccess(midiAccess) {
-  console.log("MIDI ready!");
   midi = midiAccess;
   startLoggingMIDIInput(midiAccess);
 }
@@ -20,21 +31,37 @@ function onMIDIMessage(event) {
   const velocity = data[2];
 
   // Track note start times
-  if (command === 144) {
-    if (velocity > 0) { // Note ON
+  if (command === 144 && velocity > 0) {
+    if (!noteStartTimes[note]) {
+      noteStartTimes = {};
       noteStartTimes[note] = Date.now();
-    } else { // Note OFF
-      delete noteStartTimes[note];
     }
+  } else { // Note OFF
+    delete noteStartTimes[note];
   }
 
-  // Check if a note has been held for 2 seconds
-  Object.keys(noteStartTimes).forEach(note => {
-    if (Date.now() - noteStartTimes[note] >= 2000) {
-      handleLongNote(parseInt(note));
-      delete noteStartTimes[note]; // Remove note after handling
+  console.log("note: ", note, " start time: ", noteStartTimes[note]);
+  // Check if the expected note has been held for 1 seconds
+  const expectedNote = sequenceSets[seqIndex][currentNoteIndex];
+  console.log("expected note: ", expectedNote, "curr note: ", note);
+  if (noteStartTimes[expectedNote] && (Date.now() - noteStartTimes[expectedNote] >= 1000)) {
+    noteStartTimes = {};  // Remove note after handling
+    if(currentNoteIndex === sequenceSets[seqIndex].length - 1) {
+      times += 1;
     }
-  });
+    currentNoteIndex = (currentNoteIndex + 1) % sequenceSets[seqIndex].length; // Move to next note in the sequence
+    console.log("next note:", sequenceSets[seqIndex][currentNoteIndex]);
+    if(( times ) === timesList[seqIndex]) {
+      seqIndex += 1;
+      times = 0;
+      currentNoteIndex = 0;
+      if(seqIndex == 2) {
+        scaleNote(null);
+        return null;
+      }
+    }
+    scaleNote(sequenceSets[seqIndex][currentNoteIndex]);
+  }
 }
 
 function startLoggingMIDIInput(midiAccess) {
@@ -43,56 +70,67 @@ function startLoggingMIDIInput(midiAccess) {
   });
 }
 
-function handleLongNote(note) {
+function scaleNote(note) {
   switch(note) {
     case 72:
-      playSoundAndChangeColors("#FFFF37", [], ['#E7']); // E7 to yellow
+      playSoundAndChangeColors([], ['#E1', '#E2', '#E3', '#E4', '#E5', '#E6', '#E7']); // C
       break;
     case 74:
-      playSoundAndChangeColors("#FFFF37", [], ['#E6']); // E6 to yellow
+      playSoundAndChangeColors(['#E7'], ['#E1', '#E2', '#E3', '#E4', '#E5', '#E6']); // D
       break;
     case 76:
-      playSoundAndChangeColors("#FF9224", ['#E5'], ['#E6']); // E5 to yellow, E6 to red
+      playSoundAndChangeColors(['#E7', '#E6'], ['#E1', '#E2', '#E3', '#E4', '#E5']); // E
       break;
     case 77:
-      playSoundAndChangeColors("#FFFF37", ['#E4', '#E6']); // E4 and E6 to yellow
+      playSoundAndChangeColors(['#E7', '#E5'], ['#E1', '#E2', '#E3', '#E4', '#E6']); // F
       break;
     case 79:
-      playSoundAndChangeColors("#FFFF37", ['#E3']); // E3 to yellow
+      playSoundAndChangeColors(['#E7', '#E6', '#E5', '#E4'], ['#E1', '#E2', '#E3']); // G
       break;
     case 81:
-      playSoundAndChangeColors("#FFFF37", ['#E2']); // E2 to yellow
+      playSoundAndChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3'], ['#E1', '#E2']); // A
       break;
     case 83:
-      playSoundAndChangeColors("#FFFF37", ['#E1'], ['#E2']); // E1 to yellow, E2 to red
+      playSoundAndChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3', '#E2'], ['#E1']); // B
       break;
     case 84:
-      playSoundAndChangeColors("#FFFF37", []); // Only play sound
+      playSoundAndChangeColorsBreak(['#E7', '#E6', '#E5', '#E4', '#E3', '#E1'], ['#E2']); // high C
+      break;
+    case null:
+      playSoundAndChangeColorsEnd(['#E7', '#E6', '#E5', '#E4', '#E3', '#E2', '#E1'], []);
       break;
   }
 }
 
-function playSoundAndChangeColors(color, yellowCircles = [], redCircles = []) {
+function playSoundAndChangeColors(yellowCircles = [], orangeCircles = []) {
   // Play the good.mp3 sound
   const audio = new Audio('good.mp3');
   audio.play();
 
-  // Change colors
-  changeCirclesColor(color, yellowCircles, redCircles);
+  //Change colors
+  changeCirclesColor(yellowCircles, orangeCircles);
 }
 
-function changeCirclesColor(color, yellowCircles = [], redCircles = []) {
-  const allCircles = ['#E1', '#E2', '#E3', '#E4', '#E5', '#E6', '#E7'];
-  
-  // Set all circles to the default color
-  allCircles.forEach((circleId) => {
-    const circle = document.querySelector(circleId);
-    if (circle) {
-      circle.setAttribute('color', "#FFFF37"); // Default to yellow
-    }
-  });
+function playSoundAndChangeColorsBreak(yellowCircles = [], orangeCircles = []) {
+  // Play the good.mp3 sound
+  const audio = new Audio('tryagain.mp3');
+  audio.play();
 
-  // Apply specific colors
+  //Change colors
+  changeCirclesColor(yellowCircles, orangeCircles);
+}
+
+function playSoundAndChangeColorsEnd(yellowCircles = [], orangeCircles = []) {
+  // Play the good.mp3 sound
+  const audio = new Audio('perfect.mp3');
+  audio.play();
+
+  //Change colors
+  changeCirclesColor(yellowCircles, orangeCircles);
+}
+
+function changeCirclesColor(yellowCircles = [], orangeCircles = []) {
+  // Apply yellow color
   yellowCircles.forEach((circleId) => {
     const circle = document.querySelector(circleId);
     if (circle) {
@@ -100,10 +138,11 @@ function changeCirclesColor(color, yellowCircles = [], redCircles = []) {
     }
   });
   
-  redCircles.forEach((circleId) => {
+  // Apply orange color
+  orangeCircles.forEach((circleId) => {
     const circle = document.querySelector(circleId);
     if (circle) {
-      circle.setAttribute('color', "#FF0000"); // Set to red
+      circle.setAttribute('color', "#FF9224"); // Set to orange
     }
   });
 }
@@ -112,7 +151,7 @@ function changeCirclesColor(color, yellowCircles = [], redCircles = []) {
 function stopMIDI() {
   if (midi) {
     midi.inputs.forEach(input => input.close());
-    midi.outputs.forEach(output => output.close());
+    midi.outputs.forEach(output => input.close());
     console.log('MIDI access stopped.');
     midi = null;
   }
