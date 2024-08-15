@@ -1,15 +1,36 @@
 let midi = null; // global MIDIAccess object
 let noteStartTimes = {}; // Object to keep track of note start times
 let currentNoteIndex = 0; // Index to keep track of the current expected note
-// const noteSequence = [72, 74, 76, 77, 79, 81, 83, 84]; // Sequence of notes to be received
-// const musicSequence = [76, 74, 72, 74, 77, 76, 74, 72, 79, 77, 76, 74, 72, 74, 76, 72];
-const noteSequence = [72];  // , 74, 76, 77, 79, 81, 83, 84]; // Sequence of notes to be received
-const musicSequence = [76]; //, 74, 72, 74, 77, 76, 74, 72, 79, 77, 76, 74, 72, 74, 76, 72];
+const noteSequence = [72, 74, 76, 77, 79, 81, 83, 84]; // Sequence of notes to be received
+const musicSequence = [76, 74, 72, 74, 77, 76, 74, 72, 79, 77, 76, 74, 72, 74, 76, 72];
 const endSequence = [1];
 
 const sequenceSets = [ noteSequence, musicSequence, endSequence ];
 let seqIndex = 0;
-const timesList = [1, 1];
+const timesList = [2, 1, 1];
+
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    let introAudio = document.querySelector('#intro');
+    introAudio.play().catch(error => {
+      console.error('Error playing intro audio:', error);
+    });
+  }, 5000); // 5 seconds
+
+  setTimeout(function() {
+    let prepAudio = document.querySelector('#prep');
+    prepAudio.play().catch(error => {
+      console.error('Error playing prep audio:', error);
+    });
+  }, 22000); // 22 seconds
+
+  setTimeout(function() {
+    let prepAudio = document.querySelector('#start');
+    prepAudio.play().catch(error => {
+      console.error('Error playing prep audio:', error);
+    });
+  }, 27000); // 27 seconds
+});
 
 let times = 0; // count times
 
@@ -70,61 +91,70 @@ function startLoggingMIDIInput(midiAccess) {
   });
 }
 
+let audioTimes = 0;
+let endPoint = 0;
 function scaleNote(note) {
   switch(note) {
     case 72:
-      playSoundAndChangeColors([], ['#E1', '#E2', '#E3', '#E4', '#E5', '#E6', '#E7']); // C
+      endPoint += 1;
+      endAndChangeColors([], ['#E1', '#E2', '#E3', '#E4', '#E5', '#E6', '#E7']); // C
       break;
     case 74:
-      playSoundAndChangeColors(['#E7'], ['#E1', '#E2', '#E3', '#E4', '#E5', '#E6']); // D
+      justChangeColors(['#E7'], ['#E1', '#E2', '#E3', '#E4', '#E5', '#E6']); // D
       break;
     case 76:
-      playSoundAndChangeColors(['#E7', '#E6'], ['#E1', '#E2', '#E3', '#E4', '#E5']); // E
+      justChangeColors(['#E7', '#E6'], ['#E1', '#E2', '#E3', '#E4', '#E5']); // E
       break;
     case 77:
-      playSoundAndChangeColors(['#E7', '#E5'], ['#E1', '#E2', '#E3', '#E4', '#E6']); // F
+      justChangeColors(['#E7', '#E5'], ['#E1', '#E2', '#E3', '#E4', '#E6']); // F
       break;
     case 79:
-      playSoundAndChangeColors(['#E7', '#E6', '#E5', '#E4'], ['#E1', '#E2', '#E3']); // G
+      justChangeColors(['#E7', '#E6', '#E5', '#E4'], ['#E1', '#E2', '#E3']); // G
       break;
     case 81:
-      playSoundAndChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3'], ['#E1', '#E2']); // A
+      justChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3'], ['#E1', '#E2']); // A
       break;
     case 83:
-      playSoundAndChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3', '#E2'], ['#E1']); // B
+      justChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3', '#E2'], ['#E1']); // B
       break;
     case 84:
-      playSoundAndChangeColorsBreak(['#E7', '#E6', '#E5', '#E4', '#E3', '#E1'], ['#E2']); // high C
+      audioTimes += 1;
+      playSoundAndChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3', '#E1'], ['#E2']); // high C
       break;
     case null:
-      playSoundAndChangeColorsEnd(['#E7', '#E6', '#E5', '#E4', '#E3', '#E2', '#E1'], []);
+      justChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3', '#E2', '#E1'], []);
       break;
   }
 }
 
 function playSoundAndChangeColors(yellowCircles = [], orangeCircles = []) {
-  // Play the good.mp3 sound
-  const audio = new Audio('good.mp3');
-  audio.play();
-
   //Change colors
   changeCirclesColor(yellowCircles, orangeCircles);
+  // Play audios
+  setTimeout(() => {
+    if (audioTimes == 1) {
+      let tryagainAudio = document.querySelector('#tryagain');
+      tryagainAudio.play();
+    } else {
+      let perfectAudio = document.querySelector('#perfect');
+      perfectAudio.play();
+    }
+  }, 1000); // 1s delay
 }
 
-function playSoundAndChangeColorsBreak(yellowCircles = [], orangeCircles = []) {
-  // Play the good.mp3 sound
-  const audio = new Audio('tryagain.mp3');
-  audio.play();
-
+function endAndChangeColors(yellowCircles = [], orangeCircles = []) {
   //Change colors
   changeCirclesColor(yellowCircles, orangeCircles);
+  // Play audios
+  setTimeout(() => {
+    if (endPoint == 5){
+      let endAudio = document.querySelector('#end');
+     endAudio.play();
+     }
+  }, 2000); // 2s delay
 }
 
-function playSoundAndChangeColorsEnd(yellowCircles = [], orangeCircles = []) {
-  // Play the good.mp3 sound
-  const audio = new Audio('perfect.mp3');
-  audio.play();
-
+function justChangeColors(yellowCircles = [], orangeCircles = []) {
   //Change colors
   changeCirclesColor(yellowCircles, orangeCircles);
 }
@@ -146,16 +176,3 @@ function changeCirclesColor(yellowCircles = [], orangeCircles = []) {
     }
   });
 }
-
-// Function to stop MIDI
-function stopMIDI() {
-  if (midi) {
-    midi.inputs.forEach(input => input.close());
-    midi.outputs.forEach(output => input.close());
-    console.log('MIDI access stopped.');
-    midi = null;
-  }
-}
-
-// Export stopMIDI function for use in HTML file
-window.stopMIDI = stopMIDI;

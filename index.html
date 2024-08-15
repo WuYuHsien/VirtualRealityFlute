@@ -2,18 +2,36 @@
 <html>
 <head>
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-  <!--Delay include for insturction-->
-  <script>
-    setTimeout(() => {
-      const script = document.createElement('script');
-      script.src = './midi.js';
-      document.head.appendChild(script);
-    }, 17000);
-  </script>
+  <script src = "./midi.js"></script>
 </head>
 
 <body>
   <a-scene>
+  <!--Instruction-->
+    <!--Audio-->
+    <audio id="intro" src="./Audio/intro.mp3"></audio>
+    <audio id="prep" src="./Audio/prep.mp3"></audio>
+    <audio id="start" src="./Audio/start.mp3"></audio>
+    <audio id="tryagain" src="./Audio/tryagain.mp3"></audio>
+    <audio id="perfect" src="./Audio/perfect.mp3"></audio>
+    <audio id="end" src="./Audio/end.mp3"></audio>
+    <!--Text-->
+    <a-text id="" value="" position=""></a-text>
+    <a-text id="" value="" position=""></a-text>
+    <a-text id="" value="" position=""></a-text>
+    <a-text id="" value="" position=""></a-text>
+    <a-text id="" value="" position=""></a-text>
+    <a-text id="" value="" position=""></a-text>
+    <!--Text scale-->
+    <a-text id="C" value="C" position="" color="black" scale="2 2 2"></a-text>
+    <a-text id="D" value="D" position=""></a-text>
+    <a-text id="E" value="E" position=""></a-text>
+    <a-text id="F" value="F" position=""></a-text>
+    <a-text id="G" value="G" position=""></a-text>
+    <a-text id="A" value="A" position=""></a-text>
+    <a-text id="B" value="B" position=""></a-text>
+    <a-text id="highC" value="high C" position=""></a-text>
+
   <!--Environment-->
     <!--Space-->
     <a-plane position="0 0 0" rotation="-90 0 0" width="9" height="8" color="#5B5B5B"></a-plane>
@@ -30,50 +48,30 @@
     <!--Flute-->
     <a-assets>
       <a-asset-item id="flute" src="FluteModel/files/FluteComplete.glb"></a-asset-item></a-assets>
-    <a-entity position="0 0.8 -2.6" animation= "property: rotation; to: 0 1080 0; dur: 5000; easing: linear; loop: false;">
+    <a-entity position="0 0.8 -2.6" animation= "property: rotation; to: 0 4320 0; dur: 23000; easing: linear; loop: false;">
       <a-entity gltf-model="#flute" position="-1.2 0 0" scale="0.007 0.007 0.007"></a-entity></a-entity>
     <!--Fingerings-->
     <a-circle id="E1" position="0.046 2.317 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 10000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 16000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E2" position="0.046 2.165 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 10000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 16000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E3" position="0.046 2.010 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 10000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 16000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E4" position="0.046 1.856 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 10000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 16000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E5" position="0.046 1.713 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 10000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 16000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E6" position="0.046 1.562 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 10000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 16000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E7" position="0.046 1.357 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 10000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 16000; dur: 1000; easing: linear;"></a-circle> 
-    
-  <!--Music-->
-    <!--Fingerings-->
-    <!--MIDI-->
-
-  <!--Instruction-->
-    <!--Text-->
-    <!--Audio-->
-
-  <!--Object Tracking-->
-
+      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle> 
   </a-scene>
-
-  <script>
-    setTimeout(() => {
-      if (window.stopMIDI) {
-        window.stopMIDI();
-      }
-    }, 2 * 60 * 1000); // Stop MIDI.js after 2 minutes
-  </script>
-
 </body>
 </html>
