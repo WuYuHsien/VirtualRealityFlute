@@ -2,11 +2,22 @@
 <html>
 <head>
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
   <script src = "./midi.js"></script>
 </head>
 
 <body>
   <a-scene>
+  <!--Hand tracking--> 
+    <a-entity id="leftHand" hand-tracking-controls="hand: left;" grab></a-entity>
+    <a-entity id="rightHand" hand-tracking-controls="hand: right;" grab></a-entity>
+    <!--Grab flute-->
+    <a-assets>
+      <a-asset-item id="grabFlute" src="FluteModel/files/FluteComplete.glb"></a-asset-item></a-assets>
+    <a-entity position="0 0 0" scale="0.003 0.003 0.003" rotation="0 0 0"  dynamic-body grab>
+      <a-entity gltf-model="#grabFlute"></a-entity>
+    </a-entity>
+
   <!--Instruction-->
     <!--Audio-->
     <audio id="intro" src="./Audio/intro.mp3"></audio>
@@ -15,22 +26,25 @@
     <audio id="tryagain" src="./Audio/tryagain.mp3"></audio>
     <audio id="perfect" src="./Audio/perfect.mp3"></audio>
     <audio id="end" src="./Audio/end.mp3"></audio>
-    <!--Text-->
+    <!--Subtitles-->
     <a-text id="" value="" position=""></a-text>
     <a-text id="" value="" position=""></a-text>
     <a-text id="" value="" position=""></a-text>
     <a-text id="" value="" position=""></a-text>
     <a-text id="" value="" position=""></a-text>
     <a-text id="" value="" position=""></a-text>
-    <!--Text scale-->
-    <a-text id="C" value="C" position="" color="black" scale="2 2 2"></a-text>
-    <a-text id="D" value="D" position=""></a-text>
-    <a-text id="E" value="E" position=""></a-text>
-    <a-text id="F" value="F" position=""></a-text>
-    <a-text id="G" value="G" position=""></a-text>
-    <a-text id="A" value="A" position=""></a-text>
-    <a-text id="B" value="B" position=""></a-text>
-    <a-text id="highC" value="high C" position=""></a-text>
+    <!--Scale hints-->
+    <a-text id="scale" value="scale" position="-0.9 5.2 -8" color="#000000" opacity="0" scale="3 3 3"></a-text>
+    <a-text id="music" value="music" position="-0.9 5.2 -8" color="#000000" opacity="0" scale="3 3 3"></a-text>
+    <a-text id="C" value="C5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"
+      animation="property: opacity; to: 1; delay: 31000; dur: 1000; easing: linear;"></a-text>
+    <a-text id="D" value="D5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="E" value="E5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="F" value="F5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="G" value="G5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="A" value="A5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="B" value="B5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="C6" value="C6" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
 
   <!--Environment-->
     <!--Space-->

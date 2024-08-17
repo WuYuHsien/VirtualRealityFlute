@@ -98,31 +98,40 @@ function scaleNote(note) {
     case 72:
       endPoint += 1;
       endAndChangeColors([], ['#E1', '#E2', '#E3', '#E4', '#E5', '#E6', '#E7']); // C
+      changeTextOpacity(['C'], ['D', 'E', 'F', 'G', 'A', 'B', 'C6']);
       break;
     case 74:
       justChangeColors(['#E7'], ['#E1', '#E2', '#E3', '#E4', '#E5', '#E6']); // D
+      changeTextOpacity(['D'], ['C', 'E', 'F', 'G', 'A', 'B', 'C6']);
       break;
     case 76:
       justChangeColors(['#E7', '#E6'], ['#E1', '#E2', '#E3', '#E4', '#E5']); // E
+      changeTextOpacity(['E'], ['C', 'D', 'F', 'G', 'A', 'B', 'C6']);
       break;
     case 77:
-      justChangeColors(['#E7', '#E5'], ['#E1', '#E2', '#E3', '#E4', '#E6']); // F
+      justChangeColors(['#E5'], ['#E1', '#E2', '#E3', '#E4', '#E6', '#E7']); // F
+      changeTextOpacity(['F'], ['C', 'D', 'E', 'G', 'A', 'B', 'C6']);
       break;
     case 79:
       justChangeColors(['#E7', '#E6', '#E5', '#E4'], ['#E1', '#E2', '#E3']); // G
+      changeTextOpacity(['G'], ['C', 'D', 'E', 'F', 'A', 'B', 'C6']);
       break;
     case 81:
       justChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3'], ['#E1', '#E2']); // A
+      changeTextOpacity(['A'], ['C', 'D', 'E', 'F', 'G', 'B', 'C6']);
       break;
     case 83:
       justChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3', '#E2'], ['#E1']); // B
+      changeTextOpacity(['B'], ['C', 'D', 'E', 'F', 'G', 'A', 'C6']);
       break;
     case 84:
       audioTimes += 1;
       playSoundAndChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3', '#E1'], ['#E2']); // high C
+      changeTextOpacity(['C6'], ['C', 'D', 'E', 'F', 'G', 'A', 'B']);
       break;
     case null:
       justChangeColors(['#E7', '#E6', '#E5', '#E4', '#E3', '#E2', '#E1'], []);
+      changeTextOpacity([], ['#C', '#D', '#E', '#F', '#G', '#A', '#B', '#C6']);
       break;
   }
 }
@@ -173,6 +182,28 @@ function changeCirclesColor(yellowCircles = [], orangeCircles = []) {
     const circle = document.querySelector(circleId);
     if (circle) {
       circle.setAttribute('color', "#FF9224"); // Set to orange
+    }
+  });
+}
+
+function changeTextOpacity(showTextIds, hideTextIds) {
+  showTextIds.forEach(id => {
+    let element = document.querySelector(`a-text#${id}`);
+    if (element) {
+      console.log(`Showing text: ${id}`);
+      element.setAttribute('opacity', 1);
+    } else {
+      console.error(`Element not found: ${id}`);
+    }
+  });
+
+  hideTextIds.forEach(id => {
+    let element = document.querySelector(`a-text#${id}`);
+    if (element) {
+      console.log(`Hiding text: ${id}`);
+      element.setAttribute('opacity', 0);
+    } else {
+      console.error(`Element not found: ${id}`);
     }
   });
 }
