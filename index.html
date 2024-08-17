@@ -10,18 +10,14 @@
 <body>
   <a-scene>
   <!--Hand tracking--> 
-    <a-entity id="leftHand" hand-tracking-controls="hand: left;" super-hands></a-entity>
-    <a-entity id="rightHand" hand-tracking-controls="hand: right;" super-hands></a-entity>
+    <a-entity id="leftHand" hand-tracking-grab-controls="hand: left;"></a-entity>
+    <a-entity id="rightHand" hand-tracking-grab-controls="hand: right;"></a-entity>
     <!--Grab flute-->
     <a-assets>
       <a-asset-item id="grabFlute" src="FluteModel/files/FluteComplete.glb"></a-asset-item></a-assets>
-      <a-entity id="grabFluteEntity" position="-0.18 1.15 0" scale="0.003 0.003 0.003" rotation="0 0 0" 
-      dynamic-body="shape: box;" 
-      grabbable 
-      stretchable 
-      draggable>
-<a-entity gltf-model="#grabFlute"></a-entity>
-</a-entity>
+    <a-entity position="-0.18 1.15 0" scale="0.001 0.001 0.001" rotation="0 0 0" grabbable>
+      <a-entity gltf-model="#grabFlute"></a-entity>
+    </a-entity>
 
   <!--Instruction-->
     <!--Audio-->
