@@ -8,15 +8,15 @@
 </head>
 
 <body>
-  <a-scene obb-collider="showColliders: true">
+  <a-scene>
   <!--Hand tracking--> 
     <a-entity id="leftHand" hand-tracking-grab-controls="hand: left;"></a-entity>
     <a-entity id="rightHand" hand-tracking-grab-controls="hand: right;"></a-entity>
     <!--Grab flute-->
     <a-assets>
       <a-asset-item id="grabFlute" src="FluteModel/files/FluteComplete.glb"></a-asset-item></a-assets>
-    <a-entity position="-0.18 1.15 0" scale="0.001 0.001 0.001" rotation="0 0 0" grabbable>
-      <a-entity gltf-model="#grabFlute"></a-entity>
+    <a-entity position="-0.18 1.15 0" scale="0.0015 0.0015 0.0015" rotation="0 0 0" grabbable>
+      <a-entity gltf-model="#grabFlute" position="-175 -185 -20"></a-entity>
     </a-entity>
 
   <!--Instruction-->
