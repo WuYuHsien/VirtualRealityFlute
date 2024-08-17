@@ -3,20 +3,25 @@
 <head>
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/super-hands/dist/aframe-super-hands.min.js"></script>
   <script src = "./midi.js"></script>
 </head>
 
 <body>
   <a-scene>
   <!--Hand tracking--> 
-    <a-entity id="leftHand" hand-tracking-controls="hand: left;" grab></a-entity>
-    <a-entity id="rightHand" hand-tracking-controls="hand: right;" grab></a-entity>
+    <a-entity id="leftHand" hand-tracking-controls="hand: left;" super-hands></a-entity>
+    <a-entity id="rightHand" hand-tracking-controls="hand: right;" super-hands></a-entity>
     <!--Grab flute-->
     <a-assets>
       <a-asset-item id="grabFlute" src="FluteModel/files/FluteComplete.glb"></a-asset-item></a-assets>
-    <a-entity position="-0.18 1.15 0" scale="0.001 0.001 0.001" rotation="0 0 0"  dynamic-body grab>
-      <a-entity gltf-model="#grabFlute"></a-entity>
-    </a-entity>
+      <a-entity id="grabFluteEntity" position="-0.18 1.15 0" scale="0.003 0.003 0.003" rotation="0 0 0" 
+      dynamic-body="shape: box;" 
+      grabbable 
+      stretchable 
+      draggable>
+<a-entity gltf-model="#grabFlute"></a-entity>
+</a-entity>
 
   <!--Instruction-->
     <!--Audio-->
