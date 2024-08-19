@@ -22,8 +22,8 @@
     <!--Grab flute-->
     <a-assets>
       <a-asset-item id="grabFlute" src="FluteModel/files/FluteComplete.glb"></a-asset-item></a-assets>
-    <a-entity position="-0.18 1.15 0" scale="0.001 0.001 0.001" rotation="0 0 0" grabbable>
-      <a-entity gltf-model="#grabFlute" position="-175 -185 -20" scale="0.5 0.5 0.5"></a-entity>
+    <a-entity position="0 1.45 -0.4" scale="0.002 0.002 0.002" rotation="0 0 0" grabbable>
+      <a-entity gltf-model="#grabFlute" position="100 -9 86" rotation="-90 0 90" scale="0.5 0.5 0.5"></a-entity>
     </a-entity>
 
   <!--Instruction-->
@@ -35,56 +35,56 @@
     <audio id="perfect" src="./Audio/perfect.mp3"></audio>
     <audio id="end" src="./Audio/end.mp3"></audio>
     <!--Scale hints-->
-    <a-text id="scale" value="scale" position="-0.9 5.2 -8" color="#000000" opacity="0" scale="3 3 3"></a-text>
-    <a-text id="music" value="music" position="-0.9 5.2 -8" color="#000000" opacity="0" scale="3 3 3"></a-text>
-    <a-text id="C" value="C5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"
+    <a-text id="scale" value="scale" position="-0.9 5.2 -9" color="#000000" opacity="0" scale="3 3 3"></a-text>
+    <a-text id="music" value="music" position="-0.9 5.2 -9" color="#000000" opacity="0" scale="3 3 3"></a-text>
+    <a-text id="C" value="C5" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"
       animation="property: opacity; to: 1; delay: 31000; dur: 1000; easing: linear;"></a-text>
-    <a-text id="D" value="D5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
-    <a-text id="E" value="E5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
-    <a-text id="F" value="F5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
-    <a-text id="G" value="G5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
-    <a-text id="A" value="A5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
-    <a-text id="B" value="B5" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
-    <a-text id="C6" value="C6" position="-1.55 3.5 -8" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="D" value="D5" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="E" value="E5" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="F" value="F5" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="G" value="G5" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="A" value="A5" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="B" value="B5" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"></a-text>
+    <a-text id="C6" value="C6" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"></a-text>
 
   <!--Environment-->
     <!--Space-->
-    <a-plane position="0 0 0" rotation="-90 0 0" width="9" height="8" color="#5B5B5B"></a-plane>
+    <a-plane position="0 0 -1" rotation="-90 0 0" width="9" height="8" color="#5B5B5B"></a-plane>
     <a-sky color="#000000"></a-sky>
     <!--Screen-->
-    <a-plane position="0 4 -8" width="6" height="5" color="#FCFCFC"></a-plane>
-    <a-box position="0 6.5 -8" depth="0.5" width="6.5" height="0.5" color="#ADADAD"></a-box>
-    <a-circle position="2.5 6.4 -7.6" radius="0.1" color="#FF0000"></a-circle>
-    <a-circle position="2.9 6.4 -7.6" radius="0.1" color="#00DB00"></a-circle>
+    <a-plane position="0 4 -9" width="6" height="5" color="#FCFCFC"></a-plane>
+    <a-box position="0 6.5 -9" depth="0.5" width="6.5" height="0.5" color="#ADADAD"></a-box>
+    <a-circle position="2.5 6.4 -8.6" radius="0.1" color="#FF0000"></a-circle>
+    <a-circle position="2.9 6.4 -8.6" radius="0.1" color="#00DB00"></a-circle>
     <!--Table-->
-    <a-box position="0 0.3 -2.5" depth="1" width="2" height="0.5" color="#ADADAD"></a-box>
+    <a-box position="0 0.3 -3.5" depth="1" width="2" height="0.5" color="#ADADAD"></a-box>
 
   <!--Tutorial-->
     <!--Flute-->
     <a-assets>
       <a-asset-item id="flute" src="FluteModel/files/FluteComplete.glb"></a-asset-item></a-assets>
-    <a-entity position="0 0.8 -2.6" animation= "property: rotation; to: 0 4320 0; dur: 23000; easing: linear; loop: false;">
-      <a-entity gltf-model="#flute" position="-1.2 0 0" scale="0.007 0.007 0.007"></a-entity></a-entity>
+      <a-entity position="0 0.8 -3.6" animation= "property: rotation; to: 0 4320 0; dur: 23000; easing: linear; loop: false;">
+        <a-entity gltf-model="#flute" position="-1.2 0 -0.3" scale="0.007 0.007 0.007"></a-entity></a-entity>
     <!--Fingerings-->
-    <a-circle id="E1" position="0.046 2.317 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
+    <a-circle id="E1" position="0.046 2.317 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
       animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
       animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
-    <a-circle id="E2" position="0.046 2.165 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
+    <a-circle id="E2" position="0.046 2.165 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
       animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
       animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
-    <a-circle id="E3" position="0.046 2.010 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
+    <a-circle id="E3" position="0.046 2.010 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
       animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
       animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
-    <a-circle id="E4" position="0.046 1.856 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
+    <a-circle id="E4" position="0.046 1.856 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
       animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
       animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
-    <a-circle id="E5" position="0.046 1.713 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
+    <a-circle id="E5" position="0.046 1.713 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
       animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
       animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
-    <a-circle id="E6" position="0.046 1.562 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
+    <a-circle id="E6" position="0.046 1.562 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
       animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
       animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
-    <a-circle id="E7" position="0.046 1.357 -2.413" radius="0.03" color="#FFFF37" material="opacity: 0" 
+    <a-circle id="E7" position="0.046 1.357 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
       animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
       animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle> 
     <!--Notes-->
