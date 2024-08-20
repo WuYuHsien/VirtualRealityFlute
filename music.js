@@ -165,56 +165,56 @@ window.addEventListener('load', function() {
     highDoAudio.play().catch(error => {
       console.error('Error playing highDo audio:', error);
     });
-  }, 87000); // 87 seconds
+  }, 97000); // 97 seconds
 
   setTimeout(function() {
     let tiAudio = document.querySelector('#Ti');
     tiAudio.play().catch(error => {
       console.error('Error playing ti audio:', error);
     });
-  }, 84000); // 84 seconds
+  }, 100000); // 100 seconds
 
   setTimeout(function() {
     let laAudio = document.querySelector('#La');
     laAudio.play().catch(error => {
       console.error('Error playing la audio:', error);
     });
-  }, 81000); // 81 seconds
+  }, 103000); // 103 seconds
 
   setTimeout(function() {
     let soAudio = document.querySelector('#So');
     soAudio.play().catch(error => {
       console.error('Error playing so audio:', error);
     });
-  }, 78000); // 78 seconds
+  }, 106000); // 106 seconds
   
   setTimeout(function() {
     let faAudio = document.querySelector('#Fa');
     faAudio.play().catch(error => {
       console.error('Error playing fa audio:', error);
     });
-  }, 75000); // 75 seconds
+  }, 109000); // 109 seconds
 
   setTimeout(function() {
     let miAudio = document.querySelector('#Mi');
     miAudio.play().catch(error => {
       console.error('Error playing mi audio:', error);
     });
-  }, 72000); // 72 seconds
+  }, 113000); // 113 seconds
 
   setTimeout(function() {
     let reAudio = document.querySelector('#Re');
     reAudio.play().catch(error => {
       console.error('Error playing re audio:', error);
     });
-  }, 69000); // 69 seconds
+  }, 116000); // 116 secondsg
   
   setTimeout(function() {
     let doAudio = document.querySelector('#Do');
     doAudio.play().catch(error => {
       console.error('Error playing do audio:', error);
     });
-  }, 66000); // 66 seconds
+  }, 119000); // 119 seconds
 
 
   // Notes Fingerings
