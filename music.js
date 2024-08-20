@@ -214,7 +214,7 @@ window.addEventListener('load', function() {
     doAudio.play().catch(error => {
       console.error('Error playing do audio:', error);
     });
-  }, 119000); // 119 seconds
+  }, 119000); // 119gi seconds
 
 
   // Notes Fingerings
