@@ -20,12 +20,6 @@
     </a-entity>
 
   <!--Instruction-->
-    <!--Button-->
-    <a-entity camera look-controls position="0, 1.6, 0">
-        <a-cursor></a-cursor></a-entity>
-    <a-plane id="startButton" clickable position="0 1.6 -0.2" width="0.15" height="0.05" color="#4CC3D9">
-        <a-text value="Start" align="center" position="0 0 0.004" scale="0.1 0.1 0.1" color="#FFFFFF"></a-text></a-plane>
-          
     <!--Audio-->
     <audio id="intro" src="./Audio/intro.mp3"></audio>
     <audio id="prep" src="./Audio/prep.mp3"></audio>
@@ -37,7 +31,7 @@
     <a-text id="scale" value="scale" position="-0.9 5.2 -9" color="#000000" opacity="0" scale="3 3 3"></a-text>
     <a-text id="music" value="music" position="-0.9 5.2 -9" color="#000000" opacity="0" scale="3 3 3"></a-text>
     <a-text id="C" value="C5" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"
-      animation="property: opacity; to: 1; delay: 31000; dur: 1000; easing: linear;"></a-text>
+      animation="property: opacity; to: 1; delay: 41000; dur: 1000; easing: linear;"></a-text>
     <a-text id="D" value="D5" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"></a-text>
     <a-text id="E" value="E5" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"></a-text>
     <a-text id="F" value="F5" position="-1.55 3.5 -9" color="#000000" opacity="0" scale="10 10 10"></a-text>
@@ -62,30 +56,30 @@
     <!--Flute-->
     <a-assets>
       <a-asset-item id="flute" src="FluteModel/files/FluteComplete.glb"></a-asset-item></a-assets>
-      <a-entity position="0 0.8 -3.6" animation= "property: rotation; to: 0 4320 0; dur: 23000; easing: linear; loop: false;">
+      <a-entity position="0 0.8 -3.6" animation= "property: rotation; to: 0 4680 0; dur: 33000; easing: linear; loop: false;">
         <a-entity gltf-model="#flute" position="-1.2 0 -0.3" scale="0.007 0.007 0.007"></a-entity></a-entity>
     <!--Fingerings-->
     <a-circle id="E1" position="0.046 2.317 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 35000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 41000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E2" position="0.046 2.165 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 35000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 41000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E3" position="0.046 2.010 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 35000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 41000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E4" position="0.046 1.856 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 35000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 41000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E5" position="0.046 1.713 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 35000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 41000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E6" position="0.046 1.562 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle>
+      animation="property: material.opacity; to: 1; delay: 35000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 41000; dur: 1000; easing: linear;"></a-circle>
     <a-circle id="E7" position="0.046 1.357 -3.682" radius="0.03" color="#FFFF37" material="opacity: 0" 
-      animation="property: material.opacity; to: 1; delay: 25000; dur: 1000; easing: linear;" 
-      animation__1="property: color; to: #FF9224; delay: 31000; dur: 1000; easing: linear;"></a-circle> 
+      animation="property: material.opacity; to: 1; delay: 35000; dur: 1000; easing: linear;" 
+      animation__1="property: color; to: #FF9224; delay: 41000; dur: 1000; easing: linear;"></a-circle> 
     <!--Notes-->
     <audio id="Do" src="./Audio/notes/C5.mp3"></audio>
     <audio id="Re" src="./Audio/notes/D5.mp3"></audio>
