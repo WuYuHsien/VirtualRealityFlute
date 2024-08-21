@@ -1,3 +1,11 @@
+AFRAME.registerComponent('clickable', {
+    init: function () {
+      this.el.addEventListener('click', () => {
+        this.el.emit('click'); // 發射 'click' 事件
+      });
+    }
+  });
+  
 AFRAME.registerComponent('start-game', {
     init: function() {
       let button = document.querySelector('#startButton');
