@@ -21,8 +21,11 @@
 
   <!--Instruction-->
     <!--Button-->
-    <a-plane id="startButton" position="0 1.6 -0.2" width="0.15" height="0.05" color="#4CC3D9">
-        <a-text value="Start" align="center" position="0 0 0.1" scale="0.1 0.1 0.1" color="#FFFFFF"></a-text></a-plane>
+    <a-entity camera look-controls position="0, 1.6, 0">
+        <a-cursor></a-cursor></a-entity>
+    <a-plane id="startButton" class="clickable" position="0 1.6 -0.2" width="0.15" height="0.05" color="#4CC3D9">
+        <a-text value="Start" align="center" position="0 0 0.004" scale="0.1 0.1 0.1" color="#FFFFFF"></a-text></a-plane>
+          
     <!--Audio-->
     <audio id="intro" src="./Audio/intro.mp3"></audio>
     <audio id="prep" src="./Audio/prep.mp3"></audio>

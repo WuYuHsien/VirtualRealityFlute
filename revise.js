@@ -2,14 +2,13 @@ AFRAME.registerComponent('start-game', {
     init: function() {
       let button = document.querySelector('#startButton');
       button.addEventListener('click', function () {
-        button.setAttribute('visible', 'false'); // eliminate button
-    
-        startGame(); // start game
+        button.setAttribute('visible', 'false'); // 隱藏按鈕
+        startGame(); // 開始遊戲
       });
     }
   });
-
 document.querySelector('a-scene').setAttribute('start-game', '');
+
 function startGame() {
 
   // Audio tutorial
